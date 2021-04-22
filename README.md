@@ -117,7 +117,7 @@ $ xcode-select --install
 
 
 ### その他のビルドに必要なパッケージのインストール
-```
+```shell
 $ brew install nasm dosfstools binutils
 $ export PATH=/usr/local/opt/binutils/bin:$PATH
 ```
@@ -128,5 +128,16 @@ $ export PATH=/usr/local/opt/binutils/bin:$PATH
 $ brew install 0xed
 ```
 実行すると, 「そんなのないよ」と言われたので, 代わりにApp Storeから `Hex Fiend` をインストール. 
+
+
+
+# 1章
+## Hello, World!
+### mikanos-build リポジトリから `day01/bin/hello.efi`(バイナリコード), `devenv/OVMF_CODE.fd`, `devenv/OVMF_VARS.fd` を持ってくる
+```shell
+$ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/day01/bin/hello.efi
+$ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/devenv/OVMF_CODE.fd
+$ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/devenv/OVMF_VARS.fd
+```
 
 
