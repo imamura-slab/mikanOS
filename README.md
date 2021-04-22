@@ -135,7 +135,13 @@ $ brew install 0xed
 ## Hello, World!
 
 ### ダウンロード
-mikanos-build リポジトリから `day01/bin/hello.efi`(バイナリコード), `devenv/OVMF_CODE.fd`, `devenv/OVMF_VARS.fd` を持ってくる. hello.efiを一部変更すれば'Hello, World!' 以外の文字を出力できる. UEFIブートするためにOVMFファイルというのが必要らしい(*.fdのやつ). 
+mikanos-build リポジトリから
+- `day01/bin/hello.efi`(バイナリコード)
+- `devenv/OVMF_CODE.fd`
+- `devenv/OVMF_VARS.fd`
+を持ってくる.  
+hello.efiを一部変更すれば'Hello, World!' 以外の文字を出力できる.
+UEFIブートするためには, OVMFファイルというのが必要らしい(*.fdのやつ). 
 ```sh
 $ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/day01/bin/hello.efi
 $ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/devenv/OVMF_CODE.fd
