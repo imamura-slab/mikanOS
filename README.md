@@ -14,7 +14,7 @@
 
 # 環境構築
 ### EDK II
-```
+```sh
 $ cd $HOME
 $ git clone https://github.com/tianocore/edk2.git
 $ cd edk2
@@ -26,7 +26,7 @@ $ make
 ```
 
 ### mikanos-build リポジトリの準備
-```
+```sh
 $ cd $HOME
 $ git clone https://github.com/uchan-nos/mikanos-build.git osbook
 $ cd osbook/devenv
@@ -35,7 +35,7 @@ $ cd ..
 ```
 
 次の内容の mac.patch というファイルを作る
-```
+```sh
 --- a/devenv/make_image.sh
 +++ b/devenv/make_image.sh
 @@ -23,11 +23,24 @@ qemu-img create -f raw $DISK_IMG 200M
@@ -86,11 +86,11 @@ index ba8233e..aea4d7d 100755
 ```
 
 patchコマンドを実行してパッチを適用する
-```
+```sh
 $ patch -p1 < mac.patch
 ```
 とのことだったが, 実行すると
-```
+```sh
 patch: **** out of memory
 ```
 となった. そのため, 諦めて手作業でパッチを当てた.
@@ -98,18 +98,18 @@ patch: **** out of memory
 
 
 ### QUEMのインストール
-```
+```sh
 $ brew install qemu
 ```
 
 
 ### LLVMのインストール
-```
+```sh
 $ brew install llvm@9
 $ export PATH=/usr/local/opt/llvm@9/bin:$PATH (.zshrcにも書き込む)
 ```
 インストールが上手くいかなかった. 先に
-```
+```sh
 $ xcode-select --install
 ```
 を行うとインストールすることができた.
@@ -117,14 +117,14 @@ $ xcode-select --install
 
 
 ### その他のビルドに必要なパッケージのインストール
-```shell
+```sh
 $ brew install nasm dosfstools binutils
 $ export PATH=/usr/local/opt/binutils/bin:$PATH
 ```
 
 
 ### バイナリエディタ「0xED」のインストール
-```
+```sh
 $ brew install 0xed
 ```
 実行すると, 「そんなのないよ」と言われたので, 代わりにApp Storeから `Hex Fiend` をインストール. 
@@ -133,11 +133,46 @@ $ brew install 0xed
 
 # 1章
 ## Hello, World!
-### mikanos-build リポジトリから `day01/bin/hello.efi`(バイナリコード), `devenv/OVMF_CODE.fd`, `devenv/OVMF_VARS.fd` を持ってくる
-```shell
+### mikanos-build リポジトリから `day01/bin/hello.efi`(バイナリコード), `devenv/OVMF_CODE.fd`, `devenv/OVMF_VARS.fd` を持ってくる. hello.efiを一部変更すれば'Hello, World!' 以外の文字を出力できる. UEFIブートするためにOVMFファイルというのが必要らしい(*.fdのやつ). 
+```sh
 $ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/day01/bin/hello.efi
 $ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/devenv/OVMF_CODE.fd
 $ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/devenv/OVMF_VARS.fd
 ```
+
+
+### イメージを作ってFATでフォーマット
+```sh
+$ qemu-img create -f raw mikan.img 200M
+$ mkfs.fat -n 'MIKAN_OS' -s 2 -f 2 -R 32 -F 32 mikan.img
+```
+
+### イメージをマウントして, バイナリファイルを書き込んで, アンマウント
+```sh
+$ hdiutil attach -mountpoint mnt mikan.img
+$ mkdir -p mnt/EFI/BOOT
+$ cp hello.efi mnt/EFI/BOOT/BOOTX64.EFI
+$ hdiutil detach mnt
+```
+
+
+### バイナリファイルを書き込んだイメージをQEMUで読み込み, 起動する
+```sh
+$ qemu-system-x86_64 -drive if=pflash,file=OVMF_CODE.fd -drive if=pflash,file=OVMF_VARS.fd -hda mikan.img
+```
+実行するとQEMUにカーソルを奪われるが, Macなら `Control + Option + g` でカーソルが戻ってくる. おかえり. 
+
+
+
+### 自動化
+[karaage0703さん](https://zenn.dev/karaage0703/scraps/b2705131673377)がMac用にパッチを当てたリポジトリを用意してくれている
+```sh
+$ git clone -b karaage https://github.com/karaage0703/mikanos-build osbook
+```
+以下を実行すると, ここまでの作業を実行してくれる
+```sh
+$ ~/osbook/devenv/run_qemu.sh hello.efi
+```
+
 
 
