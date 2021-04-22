@@ -133,7 +133,9 @@ $ brew install 0xed
 
 # 1章
 ## Hello, World!
-### mikanos-build リポジトリから `day01/bin/hello.efi`(バイナリコード), `devenv/OVMF_CODE.fd`, `devenv/OVMF_VARS.fd` を持ってくる. hello.efiを一部変更すれば'Hello, World!' 以外の文字を出力できる. UEFIブートするためにOVMFファイルというのが必要らしい(*.fdのやつ). 
+
+### ダウンロード
+mikanos-build リポジトリから `day01/bin/hello.efi`(バイナリコード), `devenv/OVMF_CODE.fd`, `devenv/OVMF_VARS.fd` を持ってくる. hello.efiを一部変更すれば'Hello, World!' 以外の文字を出力できる. UEFIブートするためにOVMFファイルというのが必要らしい(*.fdのやつ). 
 ```sh
 $ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/day01/bin/hello.efi
 $ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/devenv/OVMF_CODE.fd
@@ -165,10 +167,11 @@ $ qemu-system-x86_64 -drive if=pflash,file=OVMF_CODE.fd -drive if=pflash,file=OV
 
 
 ### 自動化
-[karaage0703さん](https://zenn.dev/karaage0703/scraps/b2705131673377)がMac用にパッチを当てたリポジトリを用意してくれている
+[karaage0703さん](https://zenn.dev/karaage0703/scraps/b2705131673377)がMac用にパッチを当てたリポジトリを用意してくれている. (patchコマンドを実行したのなら, このgit clone は必要ないかも)
 ```sh
 $ git clone -b karaage https://github.com/karaage0703/mikanos-build osbook
 ```
+
 以下を実行すると, ここまでの作業を実行してくれる
 ```sh
 $ ~/osbook/devenv/run_qemu.sh hello.efi
