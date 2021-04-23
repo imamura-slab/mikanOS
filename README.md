@@ -1,5 +1,5 @@
 # mikanOS on Mac
-ゼロからのOS自作入門　[内田公太・著]
+ゼロからのOS自作入門　[内田公太・著] をMacでやろう!
 
 
 # 環境
@@ -7,9 +7,8 @@
 - macOS Big Sur 11.2.3
 
 
-# 参考サイト
+# 参考サイト (ほぼ参考サイト通りにやってます)
 - [Mac で始める「ゼロからのOS自作入門」](https://qiita.com/yamoridon/items/4905765cc6e4f320c9b5)
-  - ほぼこちらをそのまま参考に. 
 - [MacでゼロからのOS自作入門をゼロから勉強中 - Zenn](https://zenn.dev/karaage0703/scraps/b2705131673377)
 
 # 環境構築
@@ -138,10 +137,11 @@ $ brew install 0xed
 mikanos-build リポジトリから
 - `day01/bin/hello.efi`(バイナリコード)
 - `devenv/OVMF_CODE.fd`
-- `devenv/OVMF_VARS.fd`
+- `devenv/OVMF_VARS.fd`  
 を持ってくる.  
-hello.efiを一部変更すれば'Hello, World!' 以外の文字を出力できる.
+hello.efiを一部変更すれば'Hello, World!' 以外の文字を出力できる.  
 UEFIブートするためには, OVMFファイルというのが必要らしい(*.fdのやつ). 
+
 ```sh
 $ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/day01/bin/hello.efi
 $ curl -O https://raw.githubusercontent.com/uchan-nos/mikanos-build/master/devenv/OVMF_CODE.fd
