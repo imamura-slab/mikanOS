@@ -208,6 +208,16 @@ Conf/target.txt ファイルを変更する(TOOL_CHAIN_TAG は本と異なる)
 | TOOL_CHAIN_TAG  | CLANGPDB                          |
 
 
+ビルドして実行
+```sh
+$ cd ~/edk2
+$ build
+$ cd Build/MikanLoaderX64/DEBUG_CLANGPDB/X64
+$ ~/osbook/devenv/run_qemu.sh Loader.efi
+```
+
+
+
 
 
 
