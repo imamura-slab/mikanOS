@@ -1,6 +1,6 @@
 **/a.out
 
-*.img
-*.fd
+**/*.img
+**/*.fd
 
 mnt
