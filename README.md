@@ -185,3 +185,29 @@ $ ~/osbook/devenv/run_qemu.sh hello.efi
 
 
 
+# 2章
+## EDK II でハローワールド
+
+```sh
+$ git clone https://github.com/uchan-nos/mikanos.git
+$ cd mikanos
+$ git checkout osbook_day02a
+
+$ cd ~/edk2
+$ ln -s ~/mikanos/MikanLoaderPkg ./
+
+$ source edksetup.sh
+```
+
+Conf/target.txt ファイルを変更する(TOOL_CHAIN_TAG は本と異なる)
+| 項目            | 値                                |
+|:----------------|:----------------------------------|
+| ACTIVE_PLATFORM | MikanLoaderPkg/MikanLoaderPkg.dsc |
+| TARGET          | DEBUG                             |
+| TARGET_ARCH     | X64                               |
+| TOOL_CHAIN_TAG  | CLANGPDB                          |
+
+
+
+
+
