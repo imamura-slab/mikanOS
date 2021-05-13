@@ -131,8 +131,8 @@ $ brew install 0xed
 
 
 ***
-[1章 PCの仕組みとハローワールド](./section1)
-[2章 EDK II入門とメモリマップ](./section2)
-[3章 画面表示の練習とブートローダ](./section3)
+- [1章 PCの仕組みとハローワールド](./section1)
+- [2章 EDK II入門とメモリマップ](./section2)
+- [3章 画面表示の練習とブートローダ](./section3)
 
 
