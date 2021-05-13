@@ -3,13 +3,14 @@
 
 
 # 環境
-- MacBook Air (2020 Intel)
+- MacBook Air (2020 Intel CPU)
 - macOS Big Sur 11.2.3
 
 
-# 参考サイト (ほぼ参考サイト通りにやってます)
+# 参考サイト (ほぼ参考サイト通りに)
 - [Mac で始める「ゼロからのOS自作入門」](https://qiita.com/yamoridon/items/4905765cc6e4f320c9b5)
 - [MacでゼロからのOS自作入門をゼロから勉強中 - Zenn](https://zenn.dev/karaage0703/scraps/b2705131673377)
+
 
 # 環境構築
 ### EDK II
