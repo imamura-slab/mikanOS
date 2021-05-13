@@ -10,6 +10,11 @@
 # 参考サイト (ほぼ参考サイト通りに)
 - [Mac で始める「ゼロからのOS自作入門」](https://qiita.com/yamoridon/items/4905765cc6e4f320c9b5)
 - [MacでゼロからのOS自作入門をゼロから勉強中 - Zenn](https://zenn.dev/karaage0703/scraps/b2705131673377)
+- この書籍に関するGithub
+  - サポートサイト : [https://github.com/uchan-nos/os-from-zero](https://github.com/uchan-nos/os-from-zero)
+  - MikanOS ソースコード : [https://github.com/uchan-nos/mikanos](https://github.com/uchan-nos/mikanos)
+  - MikanOS 開発環境 : [https://github.com/uchan-nos/mikanos-build](https://github.com/uchan-nos/mikanos-build)
+
 
 
 # 環境構築
