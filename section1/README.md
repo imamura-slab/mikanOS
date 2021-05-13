@@ -38,7 +38,7 @@ $ hdiutil detach mnt
 $ qemu-system-x86_64 -drive if=pflash,file=OVMF_CODE.fd -drive if=pflash,file=OVMF_VARS.fd -hda mikan.img
 ```
 
-![Hello World !](./image/hello_yuta.png)
+![Hello World !](../image/hello_yuta.png)
 
 
 実行するとQEMUにカーソルを奪われるが, Macなら `Control + Option + g` でカーソルが戻ってくる. おかえり. 
